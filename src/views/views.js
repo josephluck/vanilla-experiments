@@ -17,5 +17,16 @@ module.exports = {
         </div>
       </div>
     `
+  },
+  generateResult (result) {
+    return `
+      <div>Result</div>
+    `
+  },
+  renderResults (elm, results) {
+    elm.innerHTML = ''
+
+    const resultElms = results.map(this.generateResult)
+    console.log(resultElms)
   }
 }

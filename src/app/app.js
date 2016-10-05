@@ -17,8 +17,10 @@ module.exports = {
     const searchInputElm = document.getElementById('search-input')
     events.attachEvent(searchInputElm, 'keydown', ((e) => {
       const searchQuery = e.target.value
-      this.search(searchQuery).then((results) => {
-        console.log(results)
+      this.search(searchQuery).then((response) => {
+        console.log(response)
+        const resultsElm = document.getElementById('results-list')
+        views.renderResults(resultsElm, response.results)
       }, (error) => {
         console.log(error)
       })
