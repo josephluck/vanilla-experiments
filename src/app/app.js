@@ -20,7 +20,11 @@ module.exports = {
       this.search(searchQuery).then((response) => {
         console.log(response)
         const resultsElm = document.getElementById('results-list')
-        views.renderResults(resultsElm, response.results)
+        if (response.results.length) {
+          views.renderResults(resultsElm, response.results)
+        } else {
+          views.renderNoResults(resultsElm)
+        }
       }, (error) => {
         console.log(error)
       })

@@ -28,5 +28,8 @@ module.exports = {
   renderResults (elm, results) {
     const resultsElm = results.map(this.generateResult).join('')
     elm.innerHTML = resultsElm
+  },
+  renderNoResults (elm) {
+    elm.innerHTML = this.noResultsElm()
   }
 }
