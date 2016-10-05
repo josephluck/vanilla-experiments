@@ -15,17 +15,14 @@ module.exports = {
   },
   attachEvents () {
     const searchInputElm = document.getElementById('search-input')
-    events.attachEvent(searchInputElm, 'keydown', this.events.onSearch.bind(this, this.search))
-  },
-  events: {
-    onSearch (search, e) {
-      console.log(search, e.target.value)
-      search(e.target.value).then((results) => {
+    events.attachEvent(searchInputElm, 'keydown', ((e) => {
+      const searchQuery = e.target.value
+      this.search(searchQuery).then((results) => {
         console.log(results)
       }, (error) => {
         console.log(error)
       })
-    }
+    }))
   },
   search (query) {
     return new Promise((resolve, reject) => {
