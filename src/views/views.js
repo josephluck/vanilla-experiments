@@ -1,5 +1,9 @@
 module.exports = {
   renderScaffolding (elm) {
-    console.log(elm)
+    elm.innerHTML = `
+      <h1>
+        Hello
+      </h1>
+    `
   }
 }

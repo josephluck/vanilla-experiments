@@ -3,7 +3,10 @@ const views = require('../views')
 
 module.exports = {
   run () {
-    views.renderScaffolding(document.body)
+    const rootElm = document.createElement('div')
+    rootElm.id = 'root'
+    document.body.appendChild(rootElm)
+    views.renderScaffolding(document.getElementById('root'))
   },
   search (query) {
     api.search.getMovie({
