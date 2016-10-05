@@ -15,7 +15,7 @@ module.exports = {
   },
   attachEvents () {
     const searchInputElm = document.getElementById('search-input')
-    events.attachEvent(searchInputElm, 'keydown', ((e) => {
+    events.attachEvent(searchInputElm, 'keydown', (e) => {
       const searchQuery = e.target.value
       this.search(searchQuery).then((response) => {
         console.log(response)
@@ -24,7 +24,7 @@ module.exports = {
       }, (error) => {
         console.log(error)
       })
-    }))
+    })
   },
   search (query) {
     return new Promise((resolve, reject) => {

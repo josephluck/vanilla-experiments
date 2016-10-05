@@ -20,13 +20,13 @@ module.exports = {
   },
   generateResult (result) {
     return `
-      <div>Result</div>
+      <div class='result'>
+        ${result.original_title}
+      </div>
     `
   },
   renderResults (elm, results) {
-    elm.innerHTML = ''
-
-    const resultElms = results.map(this.generateResult)
-    console.log(resultElms)
+    const resultsElm = results.map(this.generateResult).join('')
+    elm.innerHTML = resultsElm
   }
 }
