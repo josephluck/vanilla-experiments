@@ -1,6 +1,7 @@
 const api = require('../../utils/api')
 const views = require('../views')
 const events = require('../events')
+const debounce = require('../utils/debounce')
 
 module.exports = {
   run () {
@@ -15,7 +16,7 @@ module.exports = {
   },
   attachEvents () {
     const searchInputElm = document.getElementById('search-input')
-    events.attachEvent(searchInputElm, 'keydown', (e) => {
+    const onSearchEvent = debounce((e) => {
       const searchQuery = e.target.value
       this.search(searchQuery).then((response) => {
         console.log(response)
@@ -28,7 +29,8 @@ module.exports = {
       }, (error) => {
         console.log(error)
       })
-    })
+    }, 100)
+    events.attachEvent(searchInputElm, 'keyup', onSearchEvent)
   },
   search (query) {
     return new Promise((resolve, reject) => {
