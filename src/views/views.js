@@ -1,9 +1,21 @@
 module.exports = {
+  noResultsElm () {
+    return `
+      <div>
+        No results
+      </div>
+    `
+  },
   renderScaffolding (elm) {
     elm.innerHTML = `
-      <h1>
-        Hello
-      </h1>
+      <div>
+        <div id='search-bar'>
+          <input id='search-input' />
+        </div>
+        <div id='results-list'>
+          ${this.noResultsElm()}
+        </div>
+      </div>
     `
   }
 }

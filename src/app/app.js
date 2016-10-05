@@ -11,9 +11,9 @@ module.exports = {
   search (query) {
     api.search.getMovie({
       query: query
-    }, function(data) {
+    }, function (data) {
       console.log(JSON.parse(data))
-    }, function(error) {
+    }, function (error) {
       console.log(error)
     })
   }
