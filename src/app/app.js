@@ -16,19 +16,23 @@ module.exports = {
   },
   attachEvents () {
     const searchInputElm = document.getElementById('search-input')
+    const resultsElm = document.getElementById('results-list')
     const onSearchEvent = debounce((e) => {
       const searchQuery = e.target.value
-      this.search(searchQuery).then((response) => {
-        console.log(response)
-        const resultsElm = document.getElementById('results-list')
-        if (response.results.length) {
-          views.renderResults(resultsElm, response.results)
-        } else {
-          views.renderNoResults(resultsElm)
-        }
-      }, (error) => {
-        console.log(error)
-      })
+      if (searchQuery) {
+        this.search(searchQuery).then((response) => {
+          console.log(response)
+          if (response.results.length) {
+            views.renderResults(resultsElm, response.results)
+          } else {
+            views.renderNoResults(resultsElm)
+          }
+        }, (error) => {
+          console.log(error)
+        })
+      } else {
+        views.renderNoResults(resultsElm)
+      }
     }, 100)
     events.attachEvent(searchInputElm, 'keyup', onSearchEvent)
   },
