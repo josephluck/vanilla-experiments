@@ -1,0 +1,7 @@
+{
+  "extends": ["standard"],
+  "globals": { "fetch": false },
+  "rules": {
+    "no-debugger": 0
+  }
+}
