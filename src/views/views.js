@@ -9,13 +9,8 @@ module.exports = {
   releaseDateStatTemplate (releaseDate) {
     if (releaseDate && releaseDate.length) {
       return `
-        <div class='result-stat'>
-          <div class='result-stat-label'>
-            Released on
-          </div>
-          <div class='result-stat-content'>
-            ${releaseDate}
-          </div>
+        <div class='result-release-date'>
+          Released on ${releaseDate}
         </div>
       `
     } else {
@@ -25,13 +20,8 @@ module.exports = {
   voteStatTemplate (average, count) {
     if (average && count) {
       return `
-        <div class='result-stat'>
-          <div class='result-stat-label'>
-            Rating
-          </div>
-          <div class='result-stat-content'>
-            ${average}/10 (based on ${count} votes)
-          </div>
+        <div class='result-rating'>
+          Rated ${average}/10 (based on ${count} votes)
         </div>
       `
     } else {
@@ -41,14 +31,16 @@ module.exports = {
   resultTemplate (result) {
     return `
       <div class='result'>
-        <div class='result-title'>
-          ${result.original_title}
+        <div class='result-top-section'>
+          <div class='result-title'>
+            ${result.original_title}
+          </div>
+          ${this.releaseDateStatTemplate(result.release_date)}
         </div>
         <div class='result-description'>
           ${result.overview}
         </div>
         <div class='result-stats'>
-          ${this.releaseDateStatTemplate(result.release_date)}
           ${this.voteStatTemplate(result.vote_average, result.vote_count)}
         </div>
       </div>
