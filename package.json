@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js --pushstate --port 3000 --live --title=\"Vanilla example\" --onupdate=\"npm run lint\"  -- -t [ babelify ]",
+    "start": "budo index.js --pushstate --port 3000 --live --title=\"Vanilla example\" --css style.css --onupdate=\"npm run lint\"  -- -t [ babelify ]",
     "lint": "eslint src/**/*.js",
     "test": "tape-watch -r babel-register src/**/*.test.js | tap-spec"
   },
