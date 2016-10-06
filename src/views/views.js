@@ -1,8 +1,15 @@
 module.exports = {
-  noResultsElm () {
+  noResultsTemplate () {
     return `
       <div>
         No results
+      </div>
+    `
+  },
+  resultTemplate (result) {
+    return `
+      <div class='result'>
+        ${result.original_title}
       </div>
     `
   },
@@ -13,23 +20,24 @@ module.exports = {
           <input id='search-input' />
         </div>
         <div id='results-list'>
-          ${this.noResultsElm()}
+          ${this.noResultsTemplate()}
         </div>
       </div>
     `
   },
-  generateResult (result) {
-    return `
-      <div class='result'>
-        ${result.original_title}
-      </div>
-    `
-  },
   renderResults (elm, results) {
-    const resultsElm = results.map(this.generateResult).join('')
+    const resultsElm = results.map(this.resultTemplate).join('')
     elm.innerHTML = resultsElm
+    this.removeLoading(elm)
   },
   renderNoResults (elm) {
-    elm.innerHTML = this.noResultsElm()
+    elm.innerHTML = this.noResultsTemplate()
+    this.removeLoading(elm)
+  },
+  applyLoading (elm) {
+    elm.classList.add('loading')
+  },
+  removeLoading (elm) {
+    elm.classList.remove('loading')
   }
 }

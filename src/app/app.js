@@ -20,6 +20,7 @@ module.exports = {
     const onSearchEvent = debounce((e) => {
       const searchQuery = e.target.value
       if (searchQuery) {
+        views.applyLoading(resultsElm)
         this.search(searchQuery).then((response) => {
           console.log(response)
           if (response.results.length) {
