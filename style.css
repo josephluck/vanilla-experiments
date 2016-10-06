@@ -4,7 +4,10 @@ html {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  background: gray;
+  background: rgba(0,0,0,0.1);
+  font-family: 'helvetica', sans-serif;
+  font-size: 16px;
+  line-height: 1.2em;
 }
 
 body {
@@ -16,7 +19,9 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: solid 1px black;
+  border: solid 1px rgba(0,0,0,0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
+  border-radius: 6px;
 }
 
 .no-results {
@@ -31,7 +36,13 @@ body {
   padding: 10px 20px;
   box-sizing: border-box;
   border: 0px;
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px rgba(0,0,0,0.2);
+  font-size: 16px;
+  line-height: 1.2em;
+  background: transparent;
+}
+#search-bar input:focus {
+  outline: none;
 }
 
 #results-list {
@@ -45,7 +56,7 @@ body {
 }
 
 .result {
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px rgba(0,0,0,0.2);
   padding: 10px 20px;
 }
 .result:last-of-type {
@@ -54,10 +65,13 @@ body {
 .result-top-section {
   display: flex;
   padding-bottom: 10px;
+  align-items: center;
 }
 .result-title {
   font-weight: bold;
   flex: 1;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
 }
 .result-release-date {
   flex: 0 0 auto;
