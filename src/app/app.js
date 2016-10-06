@@ -35,7 +35,19 @@ module.exports = {
         views.renderNoResults(resultsElm)
       }
     }, 100)
+    const onScrollEvent = debounce((e) => {
+      const currentScrollPositionFromBottom = e.target.scrollTop + e.target.clientHeight
+      const totalContentInnerHeight = e.target.scrollHeight
+      const infiniteScrollBuffer = 200
+      const shouldFetchMoreResults = currentScrollPositionFromBottom > totalContentInnerHeight - infiniteScrollBuffer
+      if (shouldFetchMoreResults) {
+        //
+        // Can't work out how to send a page number to the javascript API but here's where another request would be made
+        //
+      }
+    }, 100)
     events.attachEvent(searchInputElm, 'keyup', onSearchEvent)
+    events.attachEvent(resultsElm, 'scroll', onScrollEvent)
   },
   search (query) {
     return new Promise((resolve, reject) => {
