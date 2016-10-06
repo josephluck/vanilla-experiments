@@ -22,7 +22,6 @@ module.exports = {
       if (searchQuery) {
         views.applyLoading(resultsElm)
         this.search(searchQuery).then((response) => {
-          console.log(response)
           if (response.results.length) {
             views.renderResults(resultsElm, response.results)
           } else {
@@ -30,6 +29,7 @@ module.exports = {
           }
         }, (error) => {
           console.log(error)
+          // Couldn't actually get it to error, but this is where an error view would be rendered
         })
       } else {
         views.renderNoResults(resultsElm)
@@ -44,6 +44,7 @@ module.exports = {
         //
         // Can't work out how to send a page number to the javascript API but here's where another request would be made
         //
+        console.info('TODO: Should fetch more results from the API and render them')
       }
     }, 100)
     events.attachEvent(searchInputElm, 'keyup', onSearchEvent)

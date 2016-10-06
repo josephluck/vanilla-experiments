@@ -2,7 +2,7 @@ module.exports = {
   noResultsTemplate () {
     return `
       <div class='no-results'>
-        No results
+        No results, please search above.
       </div>
     `
   },
@@ -21,7 +21,8 @@ module.exports = {
     if (average && count) {
       return `
         <div class='result-rating'>
-          Rated ${average}/10 (based on ${count} votes)
+          Rated ${average}/10
+          (based on ${count} ${count > 1 ? 'votes' : 'vote'})
         </div>
       `
     } else {
@@ -49,7 +50,9 @@ module.exports = {
   renderScaffolding (elm) {
     elm.innerHTML = `
       <div id='search-bar'>
-        <input id='search-input' />
+        <input id='search-input'
+          placeholder='Please search for a movie...'
+        />
       </div>
       <div id='results-list'>
         ${this.noResultsTemplate()}
