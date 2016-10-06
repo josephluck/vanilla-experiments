@@ -6,15 +6,31 @@ module.exports = {
       </div>
     `
   },
-  resultStatTemplate (resultStat, label) {
-    if (resultStat) {
+  releaseDateStatTemplate (releaseDate) {
+    if (releaseDate && releaseDate.length) {
       return `
         <div class='result-stat'>
           <div class='result-stat-label'>
-            ${label}
+            Released on
           </div>
           <div class='result-stat-content'>
-            ${resultStat}
+            ${releaseDate}
+          </div>
+        </div>
+      `
+    } else {
+      return ''
+    }
+  },
+  voteStatTemplate (average, count) {
+    if (average && count) {
+      return `
+        <div class='result-stat'>
+          <div class='result-stat-label'>
+            Rating
+          </div>
+          <div class='result-stat-content'>
+            ${average}/10 (based on ${count} votes)
           </div>
         </div>
       `
@@ -32,8 +48,8 @@ module.exports = {
           ${result.overview}
         </div>
         <div class='result-stats'>
-          ${this.resultStatTemplate(result.release_date, 'Released on')}
-
+          ${this.releaseDateStatTemplate(result.release_date)}
+          ${this.voteStatTemplate(result.vote_average, result.vote_count)}
         </div>
       </div>
     `
