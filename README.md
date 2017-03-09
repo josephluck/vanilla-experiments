@@ -1,5 +1,7 @@
 ### Introduction
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/josephluck/vanilla-experiments.svg)](https://greenkeeper.io/)
+
 Some vanilla javascript experiments using TheMovieDb. This was a very quick and simple test to see how Vanilla javascript can be used to create a searchable list of films reading from a server.
 
 ### Installation
